@@ -24,7 +24,7 @@ if [[ "$1" == "-e" ]]; then
   shift
   case "$EFFECT" in
     sand)
-      export EFFECT="| /Users/dmmulroy/.cargo/bin/termsand"
+      export EFFECT="| /root/.cargo/bin/termsand"
       ;;
     glitch)
       export EFFECT="| glitchcat --duration infinite --glitchness 30 --amount 30"
