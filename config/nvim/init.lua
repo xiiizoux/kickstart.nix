@@ -1,5 +1,3 @@
-require("user")
-
 -- 加载 packer 插件管理器
 vim.cmd [[packadd packer.nvim]]
 
@@ -11,3 +9,6 @@ require('packers.packer')
 
 -- 加载 floaterm 配置
 require('packers.floaterm')
+
+require("user")
+
