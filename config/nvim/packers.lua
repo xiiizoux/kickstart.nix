@@ -5,6 +5,8 @@ return require('packer').startup(function(use)
 
     -- vim-floaterm 插件
     use 'voldikss/vim-floaterm'
+    -- 加载 floaterm 配置
+    require('configs.floaterm')
 
     -- 在这里添加其他插件
 end)
