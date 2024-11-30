@@ -24,16 +24,17 @@ return {
 			wilder.setup({ modes = { ":", "/", "?" } })
 
 			-- Enable fuzzy matching for commands and buffers
-			wilder.set_option("pipeline", {
-				wilder.branch(
-					wilder.cmdline_pipeline({
-						fuzzy = 1,
-					}),
-					wilder.vim_search_pipeline({
-						fuzzy = 1,
-					})
-				),
-			})
+			call wilder#setup({'modes': [':', '/', '?']})  
+  			call wilder#set_option('pipeline', [
+			    \   wilder#branch(
+			    \     wilder#cmdline_pipeline({
+			    \       'fuzzy': 1,
+			    \       'fuzzy_filter': wilder#python_fuzzy_filter(),  " 确保这一行的函数名拼写正确
+			    \     }),
+			    \     wilder#search_pipeline(),
+			    \   )
+			    \ ])
+
 
 			wilder.set_option(
 				"renderer",
