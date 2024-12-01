@@ -1,7 +1,8 @@
-require("user")
+-- 禁用鼠标功能
+vim.opt.mouse = ""
 
 -- 设置剪切板
-vim.api.nvim_set_option("clipboard", "unnamedplus")
+vim.api.nvim_set_option("clipboard", "unnamed")
 -- 从系统剪贴板复制/粘贴
 vim.keymap.set({ 'n', 'x' }, 'cp', '"+y')
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p')
@@ -18,3 +19,5 @@ else
   vim.g.python_host_prog = '/home/zou/anaconda3/envs/nvim/bin/python'
   vim.g.python3_host_prog = '/home/zou/anaconda3/envs/nvim/bin/python'
 end
+
+require("user")
