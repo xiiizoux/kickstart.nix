@@ -1,8 +1,5 @@
 require("user")
 
--- 设置clipboard
-vim.api.nvim_set_option("clipboard", "unnamed")
-
 -- 通过conda设置python环境
 if vim.loop.os_uname().sysname == "Darwin" then
   -- macOS 环境
