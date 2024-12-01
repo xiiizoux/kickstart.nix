@@ -2,6 +2,17 @@ require("user")
 
 -- 设置剪切板
 vim.api.nvim_set_option("clipboard", "unnamedplus")
+vim.g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.clipboard.osc52").copy,
+    ["*"] = require("vim.clipboard.osc52").copy,
+  },
+  paste = {
+    ["+"] = require("vim.clipboard.osc52").paste,
+    ["*"] = require("vim.clipboard.osc52").paste,
+  },
+}
 -- 从系统剪贴板复制/粘贴
 vim.keymap.set({ 'n', 'x' }, 'cp', '"+y')
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p')
