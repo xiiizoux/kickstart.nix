@@ -1,5 +1,8 @@
 -- ~/.config/nvim/lua/packer.lua
 
+-- 将 packer.nvim 插件路径添加到 packpath 中
+vim.opt.packpath:prepend(vim.fn.stdpath('data') .. '/site')
+
 -- 确保 packer 插件存在
 local ensure_packer = function()
   local fn = vim.fn
