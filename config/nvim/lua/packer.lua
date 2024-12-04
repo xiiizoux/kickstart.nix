@@ -14,29 +14,17 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- 使用 `packer` 插件时，要确保其已经加载
 vim.cmd([[packadd packer.nvim]])
 
--- 延迟加载插件配置
 local packer = require('packer')
 
--- 使用 packer 插件管理其他插件
 packer.startup(function(use)
   -- packer.nvim 自身
   use 'wbthomason/packer.nvim'
 
-  -- 动态加载 `packers` 下的模块
-  local modules = { 'packers.floaterm' }
-  for _, mod in ipairs(modules) do
-    local ok, module = pcall(require, mod)
-    if ok then
-      module(use)
-    else
-      vim.notify('Error loading module: ' .. mod .. '\n' .. module, vim.log.levels.ERROR)
-    end
-  end
+  -- 你需要使用的其他插件
+  use 'packers.floaterm'
 
-  -- 自动同步插件
   if packer_bootstrap then
     packer.sync()
   end
