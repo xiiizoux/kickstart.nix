@@ -13,13 +13,12 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- 加载模块并初始化插件
 return require('packer').startup(function(use)
   -- packer.nvim 自身
   use 'wbthomason/packer.nvim'
 
-  -- 动态加载插件模块
-  local modules = { 'plugins.vim-floaterm' }
+  -- 动态加载 `packers` 下的模块
+  local modules = { 'packers.floaterm' }
   for _, mod in ipairs(modules) do
     local ok, module = pcall(require, mod)
     if ok then
