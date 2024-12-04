@@ -17,9 +17,6 @@ local packer_bootstrap = ensure_packer()
 -- 使用 `packer` 插件时，要确保其已经加载
 vim.cmd([[packadd packer.nvim]])
 
--- 延迟加载插件配置
-local packer = require('packer')
-
 -- 使用 packer 插件管理其他插件
 packer.startup(function(use)
   -- packer.nvim 自身
