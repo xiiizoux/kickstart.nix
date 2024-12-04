@@ -1,5 +1,5 @@
-require('packer')
 require("user")
+require('packer')
 
 -- 通过conda设置python环境
 if vim.loop.os_uname().sysname == "Darwin" then
