@@ -1,5 +1,6 @@
 -- ~/.config/nvim/lua/packer.lua
 
+-- 确保 packer 插件存在
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -13,7 +14,11 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
+-- 延迟加载 packer 插件，避免循环依赖
+local packer = require('packer')
+
+-- 使用 packer 插件管理其他插件
+packer.startup(function(use)
   -- packer.nvim 自身
   use 'wbthomason/packer.nvim'
 
@@ -30,6 +35,6 @@ return require('packer').startup(function(use)
 
   -- 自动同步插件
   if packer_bootstrap then
-    require('packer').sync()
+    packer.sync()
   end
 end)
