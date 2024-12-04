@@ -1,4 +1,9 @@
 require("user")
+
+-- 确保 packer.nvim 插件正确加载
+vim.cmd [[packadd packer.nvim]]
+
+-- 加载插件管理文件
 require('packer')
 
 -- 通过conda设置python环境
