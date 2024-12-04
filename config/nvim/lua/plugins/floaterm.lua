@@ -8,7 +8,7 @@ return {
         vim.g.floaterm_position = 'center'  -- 设置终端窗口在屏幕中央打开
         
         -- 快捷键设置
-        vim.keymap.set('n', '<leader>t', ':FloatermToggle<CR>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>ft', ':FloatermToggle<CR>', { noremap = true, silent = true })
         vim.keymap.set('t', '<Esc>', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true, silent = true })
     end,
 }
