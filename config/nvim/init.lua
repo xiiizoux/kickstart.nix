@@ -1,9 +1,12 @@
 require("user")
 
+-- 在初始化时手动设置 packpath，确保 Neovim 能找到插件
+vim.opt.packpath:prepend(vim.fn.stdpath('data') .. '/site')
+
 -- 确保 packer.nvim 插件正确加载
 vim.cmd [[packadd packer.nvim]]
 
--- 加载插件管理文件
+-- 加载插件管理器
 require('packer')
 
 -- 通过conda设置python环境
