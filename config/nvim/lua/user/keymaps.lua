@@ -6,7 +6,6 @@ local xnoremap = require("user.keymap_utils").xnoremap
 local harpoon_ui = require("harpoon.ui")
 local harpoon_mark = require("harpoon.mark")
 local conform = require("conform")
-local utils = require("user.utils")
 
 local M = {}
 
@@ -55,9 +54,6 @@ nnoremap("<leader>w", "<cmd>w<cr>", { silent = false })
 
 -- Quit with leader key
 nnoremap("<leader>q", "<cmd>q<cr>", { silent = false })
-
--- Save and Quit with leader key
-nnoremap("<leader>z", "<cmd>wq<cr>", { silent = false })
 
 -- Map Oil to <leader>e
 nnoremap("<leader>e", function()
@@ -111,6 +107,17 @@ nnoremap("U", "<C-r>")
 -- Turn off highlighted results
 nnoremap("<leader>no", "<cmd>noh<cr>")
 
+-- Snacks.toggle.option("wrap", { name = "[T]oggle [W]rap" }):map("<leader>tw")
+-- Snacks.toggle.option("relativenumber", { name = "Relative [L]ine [N]umbers" }):map("<leader>ln")
+nnoremap("<leader>tw", function()
+	Snacks.toggle.option("wrap")
+end, { desc = "[T]oggle [Wrap]" })
+
+nnoremap("<leader>ln", function()
+	vim.notify("here?")
+	Snacks.toggle.option("relativenumber")
+end, { desc = "Relative [L]ine [N]umbers" })
+
 -- Diagnostics
 
 -- Goto next diagnostic of any severity
@@ -149,7 +156,7 @@ nnoremap("[w", function()
 	vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
--- Moonlander diagnostic movements --
+-- Diagnostic movements --
 
 -- Open the diagnostic under the cursor in a float window
 nnoremap("<leader>d", function()
@@ -238,28 +245,6 @@ end)
 nnoremap("<leader>5", function()
 	harpoon_ui.nav_file(5)
 end)
-
--- Git keymaps --
-nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
-nnoremap("<leader>gf", function()
-	local cmd = {
-		"sort",
-		"-u",
-		"<(git diff --name-only --cached)",
-		"<(git diff --name-only)",
-		"<(git diff --name-only --diff-filter=U)",
-	}
-
-	if not utils.is_git_directory() then
-		vim.notify(
-			"Current project is not a git directory",
-			vim.log.levels.WARN,
-			{ title = "Telescope Git Files", git_command = cmd }
-		)
-	else
-		require("telescope.builtin").git_files()
-	end
-end, { desc = "Search [G]it [F]iles" })
 
 -- Telescope keybinds --
 nnoremap("<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })

@@ -38,8 +38,14 @@
     ];
   };
 
-  programs.fish.enable = true;
-  programs.zsh.enable = true;
+  programs = {
+    fish = {
+      enable = true;
+    };
+    zsh = {
+      enable = true;
+    };
+  };
 
   services.nix-daemon.enable = true;
 
